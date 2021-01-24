@@ -29,3 +29,4 @@ The endpoints return either XML or JSON content, according to the `Accept` HTTP 
 - Return the number of milliseconds per each calculation
 - Separate unit tests in different files
 - Separate integration tests in different files
+- Add integration tests for XML results

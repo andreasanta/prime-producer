@@ -16,7 +16,7 @@ public class SimpleResponse {
     @JacksonXmlProperty
     private final int Initial;
 
-    @JsonProperty("Prime")
+    @JsonProperty("Primes")
     @JacksonXmlProperty(localName = "Prime")
     @JacksonXmlElementWrapper(localName = "Primes")
     private final List<Integer> Primes;
