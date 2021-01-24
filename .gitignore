@@ -9,6 +9,7 @@
 .project
 .classpath
 .factorypath
+.settings
 factoryConfiguration.json
 
 ### Java ###
