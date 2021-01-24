@@ -26,7 +26,8 @@ The endpoints return either XML or JSON content, according to the `Accept` HTTP 
 ## TODO
 
 - Create a StrategyFactory class to instantiate the proper stategy based on the request URL
-- Return the number of milliseconds per each calculation
 - Separate unit tests in different files
 - Separate integration tests in different files
 - Add integration tests for XML results
+- Add unit/integration tests for Parallel Algorithms
+- Return the number of milliseconds per each calculation for comparison

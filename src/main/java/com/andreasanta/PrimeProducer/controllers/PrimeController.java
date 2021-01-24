@@ -27,10 +27,28 @@ public class PrimeController {
         return ResponseEntity.ok(new SimpleResponse(target, primes));
     }
 
+    @RequestMapping(path = "/parallel_bruteforce/{target}", method = RequestMethod.GET, produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE })
+    public ResponseEntity<SimpleResponse> parallelBruteforce(@PathVariable int target) {
+        ParallelSqrtBruteforceStrategy strategy = new ParallelSqrtBruteforceStrategy();
+        List<Integer> primes = strategy.generate(target);
+
+        return ResponseEntity.ok(new SimpleResponse(target, primes));
+    }
+
     @RequestMapping(path = "/eratosthenes/{target}", method = RequestMethod.GET, produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE })
     public ResponseEntity<SimpleResponse> eratosthenes(@PathVariable int target) {
         SieveOfEratosthenes strategy = new SieveOfEratosthenes();
+        List<Integer> primes = strategy.generate(target);
+
+        return ResponseEntity.ok(new SimpleResponse(target, primes));
+    }
+
+    @RequestMapping(path = "/parallel_eratosthenes/{target}", method = RequestMethod.GET, produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE })
+    public ResponseEntity<SimpleResponse> parallelEratosthenes(@PathVariable int target) {
+        ParallelSieveOfEratosthenes strategy = new ParallelSieveOfEratosthenes();
         List<Integer> primes = strategy.generate(target);
 
         return ResponseEntity.ok(new SimpleResponse(target, primes));
@@ -45,6 +63,15 @@ public class PrimeController {
         return ResponseEntity.ok(new SimpleResponse(target, primes));
     }
 
+    @RequestMapping(path = "/parallel_sundaram/{target}", method = RequestMethod.GET, produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE })
+    public ResponseEntity<SimpleResponse> parallelSundaram(@PathVariable int target) {
+        ParallelSieveOfSundaram strategy = new ParallelSieveOfSundaram();
+        List<Integer> primes = strategy.generate(target);
+
+        return ResponseEntity.ok(new SimpleResponse(target, primes));
+    }
+
     @RequestMapping(path = "/vedic/{target}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE })
     public ResponseEntity<SimpleResponse> vedic(@PathVariable int target) {
@@ -54,10 +81,28 @@ public class PrimeController {
         return ResponseEntity.ok(new SimpleResponse(target, primes));
     }
 
+    @RequestMapping(path = "/parallel_vedic/{target}", method = RequestMethod.GET, produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE })
+    public ResponseEntity<SimpleResponse> parallelVedic(@PathVariable int target) {
+        ParallelVedicBruteforceStrategy strategy = new ParallelVedicBruteforceStrategy();
+        List<Integer> primes = strategy.generate(target);
+
+        return ResponseEntity.ok(new SimpleResponse(target, primes));
+    }
+
     @RequestMapping(path = "/atkin/{target}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE })
     public ResponseEntity<SimpleResponse> atkin(@PathVariable int target) {
         SieveOfAtkin strategy = new SieveOfAtkin();
+        List<Integer> primes = strategy.generate(target);
+
+        return ResponseEntity.ok(new SimpleResponse(target, primes));
+    }
+
+    @RequestMapping(path = "/parallel_atkin/{target}", method = RequestMethod.GET, produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE })
+    public ResponseEntity<SimpleResponse> parallelAtkin(@PathVariable int target) {
+        ParallelSieveOfAtkin strategy = new ParallelSieveOfAtkin();
         List<Integer> primes = strategy.generate(target);
 
         return ResponseEntity.ok(new SimpleResponse(target, primes));

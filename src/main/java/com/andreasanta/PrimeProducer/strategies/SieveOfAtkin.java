@@ -20,14 +20,12 @@ public class SieveOfAtkin implements IPrimeGenerationStratregy {
 
         int equationRoot = (int) Math.ceil(Math.sqrt(toNumber));
 
-        for (int x = 1; x < equationRoot; ++x) {
-
+        IntStream.range(1, equationRoot).forEach(x -> {
             int x2 = (int) Math.pow(x, 2);
 
             for (int y = 1; y < equationRoot; ++y) {
 
                 int y2 = (int) Math.pow(y, 2);
-
                 // Equation 1
                 int n = 4 * x2 + y2;
                 if (n <= toNumber && (n % 12 == 1 || n % 12 == 5))
@@ -44,15 +42,16 @@ public class SieveOfAtkin implements IPrimeGenerationStratregy {
                     primeList.set(n, !primeList.get(n));
             }
 
-        }
+        });
 
         // Sift out multiples of its square and composites
-        for (int i = 5; i <= equationRoot; ++i)
+        IntStream.range(5, equationRoot).forEach(i -> {
             if (primeList.get(i)) {
                 int i2 = (int) Math.pow(i, 2);
                 for (int j = i2; j < toNumber; j += i2)
                     primeList.set(j, false);
             }
+        });
 
         List<Integer> primeNumbers = new LinkedList<Integer>();
         IntStream.rangeClosed(2, toNumber).forEach(x -> {

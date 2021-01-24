@@ -7,7 +7,8 @@ import java.util.stream.IntStream;
 
 import lombok.extern.slf4j.Slf4j;
 
-public class SieveOfSundaram implements IPrimeGenerationStratregy {
+@Slf4j
+public class ParallelSieveOfSundaram implements IPrimeGenerationStratregy {
 
     public List<Integer> generate(int toNumber) {
 
@@ -17,7 +18,9 @@ public class SieveOfSundaram implements IPrimeGenerationStratregy {
         int limit = (toNumber - 1) / 2;
 
         // Mark numbers in form m + j + 2mj as true, if 1 <= m <= j
-        IntStream.rangeClosed(1, limit).forEach(m -> {
+        IntStream.rangeClosed(1, limit).parallel().peek(x -> {
+            log.info(Thread.currentThread().getName());
+        }).forEach(m -> {
             for (int i = m; (m + i + 2 * i * m) <= limit; ++i)
                 primeList.set(i + m + 2 * i * m, true);
         });
