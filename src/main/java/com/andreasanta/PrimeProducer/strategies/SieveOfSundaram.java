@@ -21,8 +21,10 @@ public class SieveOfSundaram implements IPrimeGenerationStratregy {
         });
 
         List<Integer> primeNumbers = new LinkedList<Integer>();
-        if (toNumber > 2)
+        if (toNumber >= 2)
             primeNumbers.add(2);
+        if (toNumber >= 3)
+            primeNumbers.add(3);
 
         IntStream.rangeClosed(2, limit).forEach(x -> {
             if (!primeList.get(x))

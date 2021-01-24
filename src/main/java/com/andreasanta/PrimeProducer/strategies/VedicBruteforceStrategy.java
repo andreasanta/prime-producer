@@ -12,7 +12,14 @@ import java.math.BigInteger;
 public class VedicBruteforceStrategy implements IPrimeGenerationStratregy {
 
     public List<Integer> generate(int toNumber) {
-        return IntStream.rangeClosed(2, toNumber).filter(x -> this.isPrime(x)).boxed().collect(Collectors.toList());
+        List<Integer> result = IntStream.rangeClosed(3, toNumber).filter(x -> this.isPrime(x)).boxed()
+                .collect(Collectors.toList());
+
+        // This is not calculated properly by this method
+        if (toNumber >= 2)
+            result.add(0, 2);
+
+        return result;
     }
 
     public boolean isPrime(int number) {

@@ -12,7 +12,12 @@ public class SieveOfAtkin implements IPrimeGenerationStratregy {
         BitSet primeList = new BitSet(toNumber + 1);
 
         // Set number 2 and 3 as primes
-        primeList.set(1, 2, true);
+        if (toNumber >= 2)
+            primeList.set(2, true);
+
+        if (toNumber >= 3)
+            primeList.set(3, true);
+
         int equationRoot = (int) Math.ceil(Math.sqrt(toNumber));
 
         for (int x = 1; x < equationRoot; ++x) {
