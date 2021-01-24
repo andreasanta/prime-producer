@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import lombok.extern.slf4j.Slf4j;
-
 public class SieveOfSundaram implements IPrimeGenerationStratregy {
 
     public List<Integer> generate(int toNumber) {
