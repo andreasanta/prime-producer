@@ -79,7 +79,7 @@ As usual with Spring Boot, running the test suite is as simple as
 
 `mvnw test`
 
-This shouls result in all tests passing.
+This should result in all tests passing.
 
 ## TODO / Future improvements
 
